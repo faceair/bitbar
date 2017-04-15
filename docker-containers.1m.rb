@@ -79,8 +79,15 @@ end
 started = CONTAINERS[:started]
 menus = CONTAINERS[:menus].join("\n")
 
+title = ""
+if started != 0 && BAR_COLORS
+  title = green(started)
+elsif started != 0
+  title = started
+end
+
 puts """
-🐳#{started != 0 && BAR_COLORS ? green(started) : started}
+🐳#{title}
 ---
 #{menus}
 ---
