@@ -56,6 +56,7 @@ def menu(name, status)
     [
       name,
       "--Start | #{container("start", name)}",
+      "--Remove | #{container("rm", name)}",
       "-----",
       "--State: #{status}",
     ]
