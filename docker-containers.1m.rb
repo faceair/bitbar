@@ -76,12 +76,11 @@ CONTAINERS = output && output.reduce({started: 0, menus: []}) do |acc, line|
   acc
 end
 
-total = (output || []).length
 started = CONTAINERS[:started]
 menus = CONTAINERS[:menus].join("\n")
 
 puts """
-🐳#{started != 0 && BAR_COLORS ? green(started) : started}/#{total}
+🐳#{started != 0 && BAR_COLORS ? green(started) : started}
 ---
 #{menus}
 ---
