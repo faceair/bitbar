@@ -30,10 +30,13 @@ def fetchPrice():
     return float(body['data'][0]['price_cny'])
 
 
+old_price = readPrice()
 price = fetchPrice()
-if readPrice() > price:
-    print('↓%.2f | color=green' % price)
-else:
+if price > old_price:
     print('↑%.2f | color=red' % price)
+elif price == old_price:
+    print("%.2f" % price)
+elif price < old_price:
+    print('↓%.2f | color=green' % price)
 
 writePrice(price)
