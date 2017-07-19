@@ -33,10 +33,10 @@ def fetchPrice():
 old_price = readPrice()
 price = fetchPrice()
 if price > old_price:
-    print('↑%.2f | color=red' % price)
+    print('↑%.2f | color=green' % price)
 elif price == old_price:
     print("%.2f" % price)
 elif price < old_price:
-    print('↓%.2f | color=green' % price)
+    print('↓%.2f | color=red' % price)
 
 writePrice(price)
