@@ -8,12 +8,15 @@ COIN_COUNT = 0
 
 
 def readPrice():
-    file = open('/tmp/eos_price.txt', 'r')
-    return float(file.read())
+    try:
+        file = open('/tmp/eos_price.txt', 'r')
+        return float(file.read())
+    except Exception:
+        return 0
 
 
 def writePrice(price):
-    file = open('/tmp/eos_price.txt', 'w')
+    file = open('/tmp/eos_price.txt', 'w+')
     file.write(str(price))
     file.close()
 
