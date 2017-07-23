@@ -1,22 +1,29 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 
+import os
 import json
 import urllib2
 
-COIN_COUNT = 0
+
+def readCount():
+    try:
+        file = open(os.path.join(os.path.dirname(__file__), '.eos-count.txt'), 'r')
+        return float(file.read())
+    except Exception:
+        return 0
 
 
 def readPrice():
     try:
-        file = open('/tmp/eos_price.txt', 'r')
+        file = open('/tmp/eos-price.txt', 'r')
         return float(file.read())
     except Exception:
         return 0
 
 
 def writePrice(price):
-    file = open('/tmp/eos_price.txt', 'w+')
+    file = open('/tmp/eos-price.txt', 'w+')
     file.write(str(price))
     file.close()
 
@@ -52,7 +59,8 @@ elif percent == 0:
     print('Change: %.2f%%' % percent)
 elif percent < 0:
     print('Change: %.2f%% | color=red' % percent)
-print("Summary: ￥%.2f | color=black" % (price * COIN_COUNT))
+
+print("Summary: ￥%.2f | color=black" % (price * readCount()))
 
 
 writePrice(price)
