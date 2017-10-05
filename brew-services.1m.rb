@@ -88,7 +88,6 @@ def plural(count)
 end
 
 output = `#{BREW} services list 2> /dev/null`.split("\n")[1..-1]
-
 services = output && output.reduce({started: 0, menus: []}) do |acc, service|
   name, status, user, _plist = service.split
   acc[:started] += 1 if status == "started"
@@ -107,16 +106,15 @@ All
 --Stop #{plural(started)} | #{service("stop", "--all")}
 --Restart #{plural(total)} | #{service("restart", "--all")}
 """
-end
 
-title = ""
-if started != 0 && BAR_COLORS
-  title = green(started)
-elsif started != 0
-  title = started
-end
+  title = ""
+  if started != 0 && BAR_COLORS
+    title = green(started)
+  elsif started != 0
+    title = started
+  end
 
-puts """
+  puts """
 🍺#{title}
 ---
 #{menus}
@@ -124,3 +122,4 @@ puts """
 #{all}
 #{REFRESH}
 """
+end
