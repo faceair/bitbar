@@ -88,10 +88,10 @@ if started != 0
   end
 
   puts """
-  🐳#{title}
-  ---
-  #{menus}
-  ---
-  #{REFRESH}
-  """
+🐳#{title}
+---
+#{menus}
+---
+#{REFRESH}
+"""
 end
